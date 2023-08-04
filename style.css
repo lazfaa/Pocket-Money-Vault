@@ -1,0 +1,489 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #444;
+  background-color: #f3f3f3;
+  height: 100vh;
+  padding: 2rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  margin-bottom: 300px;
+}
+
+.welcome {
+  font-size: 1.9rem;
+  font-weight: 500;
+}
+
+.logo {
+  height: 5.25rem;
+}
+
+.login {
+  display: flex;
+}
+
+.login__input {
+  border: none;
+  padding: 0.5rem 2rem;
+  font-size: 1.6rem;
+  font-family: inherit;
+  text-align: center;
+  width: 12rem;
+  border-radius: 10rem;
+  margin-right: 1rem;
+  color: inherit;
+  border: 1px solid #fff;
+  transition: all 0.3s;
+}
+
+.login__input:focus {
+  outline: none;
+  border: 1px solid #ccc;
+}
+
+.login__input::placeholder {
+  color: #bbb;
+}
+
+.login__btn {
+  border: none;
+  background: none;
+  font-size: 2.2rem;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.logout__btn {
+  border: none;
+  background: none;
+  font-size: 2.2rem;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.login__btn:hover,
+.logout__btn:hover,
+.btn--sort:hover {
+  outline: none;
+  color: #777;
+}
+
+/* MAIN */
+.app {
+  position: relative;
+  max-width: 100rem;
+  margin: 4rem auto;
+  display: grid;
+  grid-template-columns: 4fr 3fr;
+  grid-template-rows: auto repeat(3, 15rem) auto;
+  gap: 2rem;
+
+  /* NOTE This creates the fade in/out anumation */
+  opacity: 0;
+  transition: all 1s;
+}
+
+.balance {
+  grid-column: 1 / span 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.balance__label {
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-bottom: -0.2rem;
+}
+
+.balance__date {
+  font-size: 1.4rem;
+  color: #888;
+}
+
+.balance__value {
+  font-size: 4.5rem;
+  font-weight: 400;
+}
+
+/* MOVEMENTS */
+.movements {
+  grid-row: 2 / span 3;
+  background-color: #fff;
+  border-radius: 1rem;
+  overflow: scroll;
+}
+
+.movements__row {
+  padding: 2.25rem 4rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.movements__type {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #fff;
+  padding: 0.1rem 1rem;
+  border-radius: 10rem;
+  margin-right: 2rem;
+}
+
+.movements__date {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #666;
+}
+
+.movements__type--deposit {
+  background-image: linear-gradient(to top left, #39b385, #9be15d);
+}
+
+.movements__type--withdrawal {
+  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+}
+
+.movements__value {
+  font-size: 1.7rem;
+  margin-left: auto;
+}
+
+/* SUMMARY */
+.summary {
+  grid-row: 5 / 6;
+  display: flex;
+  align-items: baseline;
+  padding: 0 0.3rem;
+  margin-top: 1rem;
+}
+
+.summary__label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-right: 0.8rem;
+}
+
+.summary__value {
+  font-size: 2.2rem;
+  margin-right: 2.5rem;
+}
+
+.summary__value--in,
+.summary__value--interest {
+  color: #66c873;
+}
+
+.summary__value--out {
+  color: #f5465d;
+}
+
+.btn--sort {
+  margin-left: auto;
+  border: none;
+  background: none;
+  font-size: 1.3rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* OPERATIONS */
+.operation {
+  border-radius: 1rem;
+  padding: 3rem 4rem;
+  color: #333;
+}
+
+.operation--transfer {
+  background-image: linear-gradient(to top left, #ffb003, #ffcb03);
+}
+
+.operation--smartcontract {
+  background-image: linear-gradient(to top left, #39b385, #9be15d);
+}
+.operation--smartcontract__link {
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: black;
+}
+.operation--close {
+  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 2.5fr 2.5fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 0.4rem 1rem;
+}
+
+/* Exceptions for interst */
+.form.form--loan {
+  grid-template-columns: 2.5fr 1fr 2.5fr;
+}
+.form__label--loan {
+  grid-row: 2;
+}
+/* End exceptions */
+
+.form__input {
+  width: 100%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.4);
+  font-family: inherit;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #333;
+  padding: 0.3rem 1rem;
+  border-radius: 0.7rem;
+  transition: all 0.3s;
+}
+
+.form__input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.form__label {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.form__btn {
+  border: none;
+  border-radius: 0.7rem;
+  font-size: 1.8rem;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.form__btn:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.logout-timer {
+  padding: 0 0.3rem;
+  margin-top: 1.9rem;
+  text-align: right;
+  font-size: 1.25rem;
+}
+
+.timer {
+  font-weight: 600;
+}
+.about-bank {
+  margin: 5%;
+  text-align: center;
+  font-size: 1.75rem;
+}
+.open-acc-btn {
+  display: block;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  width: 20%;
+  margin-left: 0;
+  margin-right: 0;
+  border: none;
+  border-radius: 0.7rem;
+  padding: 5px;
+  background-color: rgb(24, 202, 24);
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 15%;
+  width: 30em;
+  height: 20em;
+  max-width: 60rem;
+  z-index: 100;
+  background-color: rgba(156, 240, 160, 0.8);
+}
+.modal__form label,
+button {
+  display: block;
+}
+.main-nav {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 40px;
+  z-index: 100;
+}
+.main-nav__entry {
+  display: inline-block;
+  font-size: 1.9rem;
+  margin-bottom: 40px;
+  text-decoration: none;
+  color: rgb(68, 68, 68);
+}
+.main-nav--sticky {
+  padding-top: 20px;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.about-bank h4 {
+  font-weight: unset;
+  text-align: left;
+}
+.about-bank section {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.section--hidden {
+  opacity: 0;
+}
+.section--visible {
+  transform: translateY(-4rem);
+  transition-duration: 0.3s;
+}
+.about-bank .section .section__header {
+  text-align: left;
+  color: rgb(24, 202, 24);
+}
+.about-bank .about-bank__label {
+  color: green;
+  cursor: pointer;
+}
+.about-bank .main-section-header {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 0px;
+  margin-right: 0px;
+
+  text-align: left;
+}
+.bank-tasks {
+  margin: 0px;
+  padding: 0px;
+}
+.bank-tasks .bank-tasks__btn {
+  display: inline-block;
+  text-align: center;
+  border: none;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 20px;
+  height: 50px;
+  width: 120px;
+  border-radius: 20px;
+  background-color: rgba(24, 202, 24, 0.8);
+  color: white;
+  padding: 15px;
+  cursor: pointer;
+}
+.bank-tasks .bank-tasks__btn.bank-tasks__btn--active {
+  transform: translateY(-1rem);
+  transition-duration: 0.3s;
+}
+.bank-tasks__info {
+  display: none;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: white;
+}
+#bank-tasks__info--1 {
+  display: block;
+}
+#bank-tasks__main-header {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 0px;
+  margin-right: 0px;
+
+  text-align: left;
+}
+.bank-endorsements {
+  display: flex;
+}
+#bank-endorsements__main-header {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 0px;
+  margin-right: 0px;
+
+  text-align: left;
+}
+
+.bank-endo__info {
+  display: flex;
+}
+.bank-endo__info .bank-endo__info__head {
+  font-weight: bold;
+}
+.bank-endo__info__body {
+  text-align: left;
+  margin-top: 20px;
+}
+.bank-endo__btn {
+  /*position: absolute;
+  top: 50%;*/
+  display: inline-block;
+  margin-bottom: 20px;
+  z-index: 10;
+
+  border: none;
+  background: rgba(255, 255, 255, 0.7);
+  font-family: inherit;
+  color: #333;
+  border-radius: 50%;
+  height: 5.5rem;
+  width: 5.5rem;
+  font-size: 3.25rem;
+  cursor: pointer;
+}
+
+.bank-endo__btn--left {
+  left: 6%;
+  transform: translate(-50%, -50%);
+}
+
+.bank-endo__btn--right {
+  right: 6%;
+  transform: translate(50%, -50%);
+}
+/*
+ * Display none means not there on screen, opacity 0 means it's there simply not visible
+ */
