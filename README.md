@@ -1,4 +1,4 @@
-# Pocket-Money-Walt
+# Pocket-Money-Vault
 
 This is a Banking Application that facilitate their user to manage their account as well as money.
 
