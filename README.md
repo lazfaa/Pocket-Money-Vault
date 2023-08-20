@@ -16,3 +16,5 @@ This is a Banking Application that facilitate their user to manage their account
 4. Check all the Transaction History.
 5. Open Account.
 6. Instant Closing
+
+![Screenshot from 2023-08-20 13-01-01](https://github.com/lazfaa/Pocket-Money-Vault/assets/68544833/2b42ebb0-6ce5-4f5a-9cf3-85291a5c78f7)
